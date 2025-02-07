@@ -20,7 +20,7 @@ class FasterRCNN(nn.Module):
         self.epochs = cfg['train']['max_epoch'] 
         self.batch_size = cfg['train']['batch_size']
 
-        self.ap = MeanAveragePrecision(box_format='xyxy', num_classes=self.n_classes, reduction='none')
+        self.ap = MeanAveragePrecision(box_format='xyxy')
         self.network = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=None, progress=True, num_classes = self.n_classes)
         self.network = self.network.float().cuda()
 
